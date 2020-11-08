@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
+using System.Xml.Xsl;
 
 namespace Lab2
 {
@@ -50,6 +52,8 @@ namespace Lab2
             {
                 if (Library.TryOpenXml(openFileDialog.FileName))
                 {
+                    Library.FileName = openFileDialog.SafeFileName;
+
                     Context context = new Context();
                     int method = DefineMethod();
                     ISearchStrategy concreteStrategy = Context.Strategies[method];
@@ -161,6 +165,15 @@ namespace Lab2
 
         private void ToHTMLButton_Click(object sender, EventArgs e)
         {
+            XslCompiledTransform xslt = new XslCompiledTransform();
+
+            string copyFrom = Library.XmlDocument.BaseURI;
+            string copyTo = Directory.GetCurrentDirectory() + "\\Book.html";
+
+            File.Copy(copyFrom, copyTo);
+
+            xslt.Load("https://portal.rosreestr.ru/xsl/EGRP_FIR/Reestr_Extract_Object/03/Common.xsl");
+            xslt.Transform("Books.xml", "Books.html");
         }
 
         private void AddItemsToComboBox()

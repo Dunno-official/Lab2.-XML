@@ -13,6 +13,7 @@ namespace Lab2
     static class Library
     {
         public static XmlDocument XmlDocument; // будем обращатся к xml документу из Sax, Dom, Linq
+        public static string FileName;
 
         public static Dictionary<string, Book> Books = new Dictionary<string, Book>(); // у каждой книги есть уникальный id
 
