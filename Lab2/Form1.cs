@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -165,15 +166,20 @@ namespace Lab2
 
         private void ToHTMLButton_Click(object sender, EventArgs e)
         {
-            XslCompiledTransform xslt = new XslCompiledTransform();
+            if (CheckIfXmlOpened())
+            {
+                XslCompiledTransform xslt = new XslCompiledTransform();
 
-            string copyFrom = Library.XmlDocument.BaseURI;
-            string copyTo = Directory.GetCurrentDirectory() + "\\Book.html";
+                string copyFrom = Library.XmlDocument.BaseURI.Replace("file:///", "");
+                string copyTo = copyFrom.Replace(Library.FileName, "bin/Debug/" + Library.FileName);
 
-            File.Copy(copyFrom, copyTo);
+                File.Copy(copyFrom, copyTo, true); // копируем xml в папку к нашему exe. Это нужно, чтобы правильно сработал Transform
 
-            xslt.Load("https://portal.rosreestr.ru/xsl/EGRP_FIR/Reestr_Extract_Object/03/Common.xsl");
-            xslt.Transform("Books.xml", "Books.html");
+                xslt.Load("Books.xslt");
+                xslt.Transform("books.xml", "books.html");
+
+                MessageBox.Show("Your file was successfully converted :)");
+            }
         }
 
         private void AddItemsToComboBox()
@@ -200,6 +206,17 @@ namespace Lab2
             PriceComboBox.Items.Add("0 - 10");
             PriceComboBox.Items.Add("10 - 30");
             PriceComboBox.Items.Add("30 - 50");
+        }
+
+        private void OpenHTML_Click(object sender, EventArgs e)
+        {
+            if (CheckIfXmlOpened())
+            {
+                string path = Directory.GetCurrentDirectory() + "\\books.html";
+                
+                try { Process.Start(path); }
+                catch { MessageBox.Show("Something wrong with your html :c"); }
+            }
         }
     }
 }

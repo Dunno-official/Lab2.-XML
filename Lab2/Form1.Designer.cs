@@ -46,11 +46,12 @@
             this.AuthorComboBox = new System.Windows.Forms.ComboBox();
             this.richTextBox = new System.Windows.Forms.RichTextBox();
             this.OpenXML = new System.Windows.Forms.Button();
+            this.OpenHTML = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // ClearButton
             // 
-            this.ClearButton.Location = new System.Drawing.Point(12, 411);
+            this.ClearButton.Location = new System.Drawing.Point(54, 387);
             this.ClearButton.Name = "ClearButton";
             this.ClearButton.Size = new System.Drawing.Size(141, 44);
             this.ClearButton.TabIndex = 0;
@@ -60,7 +61,7 @@
             // 
             // ToHTMLButton
             // 
-            this.ToHTMLButton.Location = new System.Drawing.Point(306, 411);
+            this.ToHTMLButton.Location = new System.Drawing.Point(54, 437);
             this.ToHTMLButton.Name = "ToHTMLButton";
             this.ToHTMLButton.Size = new System.Drawing.Size(141, 42);
             this.ToHTMLButton.TabIndex = 1;
@@ -70,7 +71,7 @@
             // 
             // SearchButton
             // 
-            this.SearchButton.Location = new System.Drawing.Point(159, 411);
+            this.SearchButton.Location = new System.Drawing.Point(201, 387);
             this.SearchButton.Name = "SearchButton";
             this.SearchButton.Size = new System.Drawing.Size(141, 44);
             this.SearchButton.TabIndex = 2;
@@ -232,12 +233,23 @@
             this.OpenXML.UseVisualStyleBackColor = true;
             this.OpenXML.Click += new System.EventHandler(this.OpenXML_Click);
             // 
+            // OpenHTML
+            // 
+            this.OpenHTML.Location = new System.Drawing.Point(201, 437);
+            this.OpenHTML.Name = "OpenHTML";
+            this.OpenHTML.Size = new System.Drawing.Size(141, 42);
+            this.OpenHTML.TabIndex = 18;
+            this.OpenHTML.Text = "Open HTML";
+            this.OpenHTML.UseVisualStyleBackColor = true;
+            this.OpenHTML.Click += new System.EventHandler(this.OpenHTML_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Coral;
-            this.ClientSize = new System.Drawing.Size(904, 484);
+            this.ClientSize = new System.Drawing.Size(904, 503);
+            this.Controls.Add(this.OpenHTML);
             this.Controls.Add(this.OpenXML);
             this.Controls.Add(this.richTextBox);
             this.Controls.Add(this.AuthorComboBox);
@@ -283,6 +295,7 @@
         private System.Windows.Forms.ComboBox AuthorComboBox;
         private System.Windows.Forms.RichTextBox richTextBox;
         private System.Windows.Forms.Button OpenXML;
+        private System.Windows.Forms.Button OpenHTML;
     }
 }
 
