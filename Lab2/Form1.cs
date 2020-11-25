@@ -20,7 +20,7 @@ namespace Lab2
         private List<RadioButton> _radioButtons;
         private List<ComboBox> _comboBoxes;
         private List<CheckBox> _checkBoxes;
-
+        private List<string> _matchesBooks = new List<string>();
         public Form1()
         {
             InitializeComponent();
@@ -79,10 +79,10 @@ namespace Lab2
             {
                 richTextBox.Clear();
                 Book criteria = GetCriteria();
-                
-                var matchesBooks = Library.SearchByCriteria(criteria);
 
-                ShowMatchBooks(matchesBooks);
+                _matchesBooks = Library.SearchByCriteria(criteria);
+
+                ShowMatchBooks(_matchesBooks);
             }
         }
 
@@ -164,19 +164,57 @@ namespace Lab2
             
         }
 
+
+        private void CreateFilteredBooksXml()
+        {
+            XmlDocument xmlDoc = new XmlDocument();
+            XmlNode rootNode = xmlDoc.CreateElement("catalog");
+            xmlDoc.AppendChild(rootNode);
+
+
+            foreach (string ID in _matchesBooks)
+            {
+                XmlNode bookNode = xmlDoc.CreateElement("book");
+                XmlAttribute attrib = xmlDoc.CreateAttribute("id");
+                attrib.Value = ID;
+                bookNode.Attributes.Append(attrib);
+
+                XmlNode authorNode = xmlDoc.CreateElement("author");
+                XmlNode titleNode = xmlDoc.CreateElement("title");
+                XmlNode genreNode = xmlDoc.CreateElement("genre");
+                XmlNode priceNode = xmlDoc.CreateElement("price");
+                XmlNode publishYearNode = xmlDoc.CreateElement("publishYear");
+                XmlNode descriptionNode = xmlDoc.CreateElement("description");
+
+                authorNode.InnerText = Library.Books[ID].Author;
+                titleNode.InnerText = Library.Books[ID].Title;
+                genreNode.InnerText = Library.Books[ID].Genre;
+                priceNode.InnerText = Library.Books[ID].Price.ToString();
+                publishYearNode.InnerText = Library.Books[ID].PublishYear.ToString();
+                descriptionNode.InnerText = Library.Books[ID].Description;
+
+                bookNode.AppendChild(authorNode);
+                bookNode.AppendChild(titleNode);
+                bookNode.AppendChild(genreNode);
+                bookNode.AppendChild(priceNode);
+                bookNode.AppendChild(publishYearNode);
+                bookNode.AppendChild(descriptionNode);
+
+                rootNode.AppendChild(bookNode);
+            }
+
+            xmlDoc.Save("FilteredBooks.xml");
+        }
+
         private void ToHTMLButton_Click(object sender, EventArgs e)
         {
             if (CheckIfXmlOpened())
             {
+                CreateFilteredBooksXml();
+
                 XslCompiledTransform xslt = new XslCompiledTransform();
-
-                string copyFrom = Library.XmlDocument.BaseURI.Replace("file:///", "");
-                string copyTo = copyFrom.Replace(Library.FileName, "bin/Debug/" + Library.FileName);
-
-                File.Copy(copyFrom, copyTo, true); // копируем xml в папку к нашему exe. Это нужно, чтобы правильно сработал Transform
-
                 xslt.Load("Books.xslt");
-                xslt.Transform("books.xml", "books.html");
+                xslt.Transform("FilteredBooks.xml", "FilteredBooks.html");
 
                 MessageBox.Show("Your file was successfully converted :)");
             }
@@ -242,4 +280,21 @@ namespace Lab2
             _radioButtons.Reverse(); // хз почему, но Controls.OfType находит их в обратном порядке
             _comboBoxes.Reverse();
             _checkBoxes.Reverse();
+ */
+
+
+
+
+/*
+ * XslCompiledTransform xslt = new XslCompiledTransform();
+
+                string copyFrom = Library.XmlDocument.BaseURI.Replace("file:///", "");
+                string copyTo = copyFrom.Replace(Library.FileName, "bin/Debug/" + Library.FileName);
+
+                File.Copy(copyFrom, copyTo, true); // копируем xml в папку к нашему exe. Это нужно, чтобы правильно сработал Transform
+
+                xslt.Load("Books.xslt");
+                xslt.Transform("books.xml", "books.html");
+
+                MessageBox.Show("Your file was successfully converted :)");
  */

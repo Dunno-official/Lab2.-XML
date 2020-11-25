@@ -15,6 +15,7 @@ namespace Lab2
         {
              XmlElement xRoot = Library.XmlDocument.DocumentElement;
              XmlNodeList xmlBookList = xRoot.SelectNodes("book");
+            
 
             foreach (XmlNode xmlBook in xmlBookList)
             {
