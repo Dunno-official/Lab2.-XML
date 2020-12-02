@@ -1,62 +1,51 @@
 <catalog>
-  <book id="bk101">
-    <author>Matthew Gambardella</author>
-    <title>XML Developer's Guide</title>
-    <genre>Computer</genre>
-    <price>44,95</price>
+  <book id="bk102">
+    <author>Kim Ralls</author>
+    <title>Midnight Rain</title>
+    <genre>Fantasy</genre>
+    <price>5,95</price>
     <publishYear>2000</publishYear>
     <description>
-      An in-depth look at creating applications
-      with XML.
+      A former architect battles corporate zombies,
+      an evil sorceress, and her own childhood to become queen
+      of the world.
     </description>
   </book>
-  <book id="bk110">
-    <author>Tim O'Brien</author>
-    <title>Microsoft .NET: The Programming Bible</title>
-    <genre>Computer</genre>
-    <price>36,95</price>
+  <book id="bk103">
+    <author>Eva Corets</author>
+    <title>Maeve Ascendant</title>
+    <genre>Fantasy</genre>
+    <price>5,95</price>
     <publishYear>2000</publishYear>
     <description>
-      Microsoft's .NET initiative is explored in
-      detail in this deep programmer's reference.
+      After the collapse of a nanotechnology
+      society in England, the young survivors lay the
+      foundation for a new society.
     </description>
   </book>
-  <book id="bk111">
-    <author>Tim O'Brien</author>
-    <title>MSXML3: A Comprehensive Guide</title>
-    <genre>Computer</genre>
-    <price>36,95</price>
-    <publishYear>2000</publishYear>
-    <description>
-      The Microsoft MSXML3 parser is covered in
-      detail, with attention to XML DOM interfaces, XSLT processing,
-      SAX and more.
-    </description>
-  </book>
-  <book id="bk112">
-    <author>Mike Galos</author>
-    <title>Visual Studio 7: A Comprehensive Guide</title>
-    <genre>Computer</genre>
-    <price>49,95</price>
+  <book id="bk104">
+    <author>Eva Corets</author>
+    <title>Oberon's Legacy</title>
+    <genre>Fantasy</genre>
+    <price>5,95</price>
     <publishYear>2001</publishYear>
     <description>
-      Microsoft Visual Studio 7 is explored in depth,
-      looking at how Visual Basic, Visual C++, C#, and ASP+ are
-      integrated into a comprehensive development
-      environment.
+      In post-apocalypse England, the mysterious
+      agent known only as Oberon helps to create a new life
+      for the inhabitants of London. Sequel to Maeve
+      Ascendant.
     </description>
   </book>
-  <book id="bk113">
-    <author>Mike Galos</author>
-    <title>Visual Studio 8: A Comprehensive Guide</title>
-    <genre>Computer</genre>
-    <price>26,7</price>
-    <publishYear>2005</publishYear>
+  <book id="bk105">
+    <author>Eva Corets</author>
+    <title>The Sundered Grail</title>
+    <genre>Fantasy</genre>
+    <price>5,95</price>
+    <publishYear>2001</publishYear>
     <description>
-      Microsoft Visual Studio 7 is explored in depth,
-      looking at how Visual Basic, Visual C++, C#, and ASP+ are
-      integrated into a comprehensive development
-      environment.
+      The two daughters of Maeve, half-sisters,
+      battle one another for control of England. Sequel to
+      Oberon's Legacy.
     </description>
   </book>
 </catalog>
